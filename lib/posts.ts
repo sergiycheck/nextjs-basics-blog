@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { PostData, PostDataWithContent } from './types';
 
 const postsDir = path.join(process.cwd(), 'posts');
 
@@ -23,7 +24,7 @@ export function getSortedPostsData() {
       id,
       ...matterResult.data,
     };
-  });
+  }) as unknown as PostData[];
 
   return allPostsData.sort(({ date: a }, { date: b }) => {
     if (a < b) return 1;
@@ -77,5 +78,5 @@ async function getPostDataFromFullPath(id, fullPath) {
     id,
     contentHtml,
     ...matterResult.data,
-  };
+  } as PostDataWithContent;
 }
