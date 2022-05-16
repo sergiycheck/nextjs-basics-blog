@@ -21,6 +21,8 @@ export default function Home({ allPostsData }: { allPostsData: PostData[] }) {
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
+        <meta name="robots" content="all" />
+        <meta name="google" content="notranslate" />
       </Head>
 
       <nav>
